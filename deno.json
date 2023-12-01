@@ -1,0 +1,14 @@
+{
+	"tasks": {
+		"dev": "deno run --watch main.ts"
+	},
+	"fmt": {
+		"singleQuote": true,
+		"useTabs": true,
+		"lineWidth": 100
+	},
+	"imports": {
+		"assert": "https://deno.land/std@0.208.0/assert/mod.ts",
+		"utils": "./utils.ts"
+	}
+}
