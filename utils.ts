@@ -6,3 +6,7 @@ export function tap<T>(item: T): T {
 	console.log(item);
 	return item;
 }
+
+export function parseInt(input: string): number {
+	return Number.parseInt(input.trim(), 10);
+}
