@@ -1,0 +1,41 @@
+{
+	"impl": {
+		"prefix": "impl",
+		"body": [
+			"import { getInput } from 'utils';",
+			"",
+			"export function part1(input: Array<string>): number {",
+			"\treturn 42;",
+			"}",
+			"",
+			"export function part2(input: Array<string>): number {",
+			"\treturn 42;",
+			"}",
+			"",
+			"if (import.meta.main) {",
+			"\tconst input = getInput(${1:day});",
+			"\tconsole.log(`Part 1: ${part1(input)}`);",
+			"\tconsole.log(`Part 2: ${part2(input)}`);",
+			"}"
+		],
+		"description": "Template for a day's challenge"
+	},
+	"test": {
+		"prefix": "test",
+		"body": [
+			"import { assertEquals } from 'assert';",
+			"import { part1, part2 } from './main.ts';",
+			"",
+			"const input = `${1:INPUT}`.split('\\n');",
+			"",
+			"Deno.test('Part 1', () => {",
+			"\tassertEquals(part1(input), 42);",
+			"});",
+			"",
+			"// Deno.test('Part 2', () => {",
+			"// \tassertEquals(part2(input), 42);",
+			"// });"
+		],
+		"description": "Template for a test file"
+	}
+}
