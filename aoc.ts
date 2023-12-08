@@ -19,6 +19,11 @@ if (import.meta.main) {
 				}) as typeof availableDays[number]);
 			const inputPath = options.input ?? `./${day.toString().padStart(2, '0')}/input.txt`;
 
+			console.log(
+				colors.bold(`Running day ${day}...`) +
+					` (${colors.italic(`https://adventofcode.com/2023/day/${day}`)})`,
+			);
+
 			const input = await getInput(inputPath);
 			const { part1, part2 } = days.get(day)!;
 			const p1 = bench(part1)(input);
