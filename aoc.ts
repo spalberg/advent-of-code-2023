@@ -1,5 +1,5 @@
 import { days } from './days.ts';
-import { colors, Command, EnumType, invariant, Select, Table } from './deps.ts';
+import { colors, Command, EnumType, existsSync, Input, invariant, Select, Table } from './deps.ts';
 
 if (import.meta.main) {
 	const availableDays = Array.from(days.keys());
@@ -17,7 +17,13 @@ if (import.meta.main) {
 					message: 'Pick a day',
 					options: availableDays,
 				}) as typeof availableDays[number]);
-			const inputPath = options.input ?? `./${day.toString().padStart(2, '0')}/input.txt`;
+			let inputPath = options.input ?? `./${day.toString().padStart(2, '0')}/input.txt`;
+			if (!isRemote(inputPath) && !existsSync(inputPath)) {
+				inputPath = await Input.prompt({
+					message: 'Input file not found, please enter path',
+					minLength: 1,
+				});
+			}
 
 			console.log(
 				colors.bold(`Running day ${day}...`) +
@@ -49,7 +55,7 @@ async function getInput(inputPath: string): Promise<Array<string>> {
 }
 
 async function loadFileContent(path: string): Promise<string> {
-	if (path.startsWith('http://') || path.startsWith('https://')) {
+	if (isRemote(path)) {
 		const response = await fetch(path);
 		if (!response.ok) {
 			throw Error(`Failed to fetch ${path}: ${response.statusText}`);
@@ -57,6 +63,10 @@ async function loadFileContent(path: string): Promise<string> {
 		return await response.text();
 	}
 	return await Deno.readTextFile(path);
+}
+
+function isRemote(path: string) {
+	return path.startsWith('http://') || path.startsWith('https://');
 }
 
 function bench(fn: (input: Array<string>) => number) {
