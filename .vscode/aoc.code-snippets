@@ -2,12 +2,13 @@
 	"impl": {
 		"prefix": "impl",
 		"body": [
+			"import { notImplemented } from '../../utils.ts';",
 			"export function part1(input: Array<string>): number {",
-			"\treturn 42;",
+			"\tnotImplemented();",
 			"}",
 			"",
 			"export function part2(input: Array<string>): number {",
-			"\treturn 42;",
+			"\tnotImplemented();",
 			"}",
 		],
 		"description": "Template for a day's challenge"

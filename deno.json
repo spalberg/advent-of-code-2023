@@ -1,6 +1,7 @@
 {
 	"tasks": {
 		"dev": "deno run -A --watch aoc.ts",
+		"remote": "deno run -A --reload=https://raw.githubusercontent.com  https://raw.githubusercontent.com/spalberg/advent-of-code-2023/main/aoc.ts",
 		"test": "deno test -A"
 	},
 	"fmt": {
