@@ -1,5 +1,3 @@
-import { getInput } from 'utils';
-
 export function part1(input: Array<string>): number {
 	let sum = 0;
 	for (let currentLine = 0; currentLine < input.length; currentLine++) {
@@ -71,10 +69,4 @@ export function part2(input: Array<string>): number {
 		(acc, [a, b]) => acc + (a * b),
 		0,
 	);
-}
-
-if (import.meta.main) {
-	const input = getInput(3);
-	console.log(`Part 1: ${part1(input)}`);
-	console.log(`Part 2: ${part2(input)}`);
 }

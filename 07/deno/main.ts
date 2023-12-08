@@ -1,5 +1,4 @@
-import { assert } from 'assert';
-import { getInput, parseInt } from 'utils';
+import { parseInt } from '../../utils.ts';
 
 type Card = 'A' | 'K' | 'Q' | 'J' | 'T' | '9' | '8' | '7' | '6' | '5' | '4' | '3' | '2';
 type Hand = [Card, Card, Card, Card, Card];
@@ -106,10 +105,4 @@ export function part2(input: Array<string>): number {
 		if (card === 'J') return 1;
 		return strengthOfCard(card);
 	}
-}
-
-if (import.meta.main) {
-	const input = getInput(7);
-	console.log(`Part 1: ${part1(input)}`);
-	console.log(`Part 2: ${part2(input)}`);
 }

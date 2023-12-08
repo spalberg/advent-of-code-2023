@@ -1,5 +1,3 @@
-import { getInput } from 'utils';
-
 type Cubes = Record<'red' | 'green' | 'blue', number>;
 type Game = { id: number; subsets: Array<Cubes> };
 
@@ -50,10 +48,4 @@ export function part2(input: Array<string>): number {
 		.map(neededCubes)
 		.map(getScore)
 		.reduce((acc, score) => acc + score, 0);
-}
-
-if (import.meta.main) {
-	const input = getInput(2);
-	console.log(`Part 1: ${part1(input)}`);
-	console.log(`Part 2: ${part2(input)}`);
 }

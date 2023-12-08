@@ -1,4 +1,4 @@
-import { assertEquals } from 'assert';
+import { assertEquals } from '../../deps.ts';
 import { part1, part2 } from './main.ts';
 
 const input = `32T3K 765
