@@ -1,14 +1,12 @@
 {
 	"tasks": {
-		"dev": "deno run --watch main.ts"
+		"dev": "deno run -A --watch aoc.ts",
+		"remote": "deno run -A --reload=https://raw.githubusercontent.com  https://raw.githubusercontent.com/spalberg/advent-of-code-2023/main/aoc.ts",
+		"test": "deno test -A"
 	},
 	"fmt": {
 		"singleQuote": true,
 		"useTabs": true,
 		"lineWidth": 100
-	},
-	"imports": {
-		"assert": "https://deno.land/std@0.208.0/assert/mod.ts",
-		"utils": "./utils.ts"
 	}
 }

@@ -1,4 +1,4 @@
-import { getInput, parseInt } from 'utils';
+import { parseInt } from '../../utils.ts';
 
 function parseCard(line: string) {
 	const [_, id, winningNumbers, ownNumbers] = line.match(/Card +(\d+): (.*) \| (.*)/) ?? [];
@@ -32,10 +32,4 @@ export function part2(input: Array<string>): number {
 		}
 	}
 	return [...cards.values()].reduce((a, b) => a + b);
-}
-
-if (import.meta.main) {
-	const input = getInput(4);
-	console.log(`Part 1: ${part1(input)}`);
-	console.log(`Part 2: ${part2(input)}`);
 }

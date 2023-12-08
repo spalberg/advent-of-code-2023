@@ -1,5 +1,3 @@
-import { getInput } from 'utils';
-
 function extractValue(line: string): number {
 	const match = line.match(/^\D*(\d).*?(\d)?\D*$/);
 	if (match == null) throw new Error('Invalid input');
@@ -44,10 +42,4 @@ export function part2(lines: Array<string>): number {
 	return lines
 		.map(extractValueWithSpelledOutDigits)
 		.reduce((a, b) => a + b);
-}
-
-if (import.meta.main) {
-	const input = getInput(1);
-	console.log(`Part 1: ${part1(input)}`);
-	console.log(`Part 2: ${part2(input)}`);
 }

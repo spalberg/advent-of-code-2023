@@ -1,4 +1,4 @@
-import { getInput, parseInt } from 'utils';
+import { parseInt } from '../../utils.ts';
 
 function parseRaces(input: Array<string>) {
 	const times = input[0].match(/\b(\d+)\b/g)?.map(parseInt) ?? [];
@@ -35,10 +35,4 @@ export function part2(input: Array<string>): number {
 		}
 	}
 	return max - min + 1;
-}
-
-if (import.meta.main) {
-	const input = getInput(6);
-	console.log(`Part 1: ${part1(input)}`);
-	console.log(`Part 2: ${part2(input)}`);
 }
