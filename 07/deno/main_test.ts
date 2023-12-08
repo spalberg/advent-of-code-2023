@@ -1,5 +1,5 @@
 import { assertEquals } from 'assert';
-import { part1, part2, rankHands } from './main.ts';
+import { part1, part2 } from './main.ts';
 
 const input = `32T3K 765
 T55J5 684
