@@ -32,8 +32,8 @@ if (import.meta.main) {
 
 			const input = await getInput(inputPath);
 			const { part1, part2 } = days.get(day)!;
-			const p1 = bench(part1)(input);
-			const p2 = bench(part2)(input);
+			const p1 = bench(part1)([...input]);
+			const p2 = bench(part2)([...input]);
 			const table = new Table()
 				.header(['Part', 'Result', 'Time (ms)'])
 				.body([

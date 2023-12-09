@@ -36,9 +36,9 @@ humidity-to-location map:
 56 93 4`.split('\n');
 
 Deno.test('Part 1', () => {
-	assertEquals(part1(input), 35);
+	assertEquals(part1([...input]), 35);
 });
 
-// Deno.test('Part 2', () => {
-// 	assertEquals(part2(input), 42);
-// });
+Deno.test('Part 2', () => {
+	assertEquals(part2([...input]), 46);
+});
