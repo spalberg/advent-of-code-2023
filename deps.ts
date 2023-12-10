@@ -5,4 +5,4 @@ export { Command, EnumType } from 'https://deno.land/x/cliffy@v1.0.0-rc.3/comman
 export { Input, Select } from 'https://deno.land/x/cliffy@v1.0.0-rc.3/prompt/mod.ts';
 export { Table } from 'https://deno.land/x/cliffy@v1.0.0-rc.3/table/mod.ts';
 export { default as invariant } from 'npm:tiny-invariant';
-export { match } from 'npm:ts-pattern';
+export { match, P } from 'npm:ts-pattern';

@@ -7,6 +7,7 @@ import * as day6 from './06/deno/main.ts';
 import * as day7 from './07/deno/main.ts';
 import * as day8 from './08/deno/main.ts';
 import * as day9 from './09/deno/main.ts';
+import * as day10 from './10/deno/main.ts';
 
 export const days = new Map(
 	[
@@ -19,5 +20,6 @@ export const days = new Map(
 		[7, day7],
 		[8, day8],
 		[9, day9],
+		[10, day10],
 	] as const,
 );

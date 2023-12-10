@@ -1,5 +1,6 @@
 import { days } from './days.ts';
 import { colors, Command, EnumType, existsSync, Input, invariant, Select, Table } from './deps.ts';
+import { setDebug } from './utils.ts';
 
 if (import.meta.main) {
 	const availableDays = Array.from(days.keys());
@@ -10,6 +11,7 @@ if (import.meta.main) {
 		.type('day', new EnumType(availableDays))
 		.option('-d, --day <day:day>', 'the day to run')
 		.option('-i, --input [input:file]', 'the input file, can also be a URL')
+		.option('--debug', 'enable debug mode', { default: false })
 		.action(async (options) => {
 			invariant(options.input !== true, 'Missing input file');
 			const day = options.day ??
@@ -24,6 +26,7 @@ if (import.meta.main) {
 					minLength: 1,
 				});
 			}
+			setDebug(options.debug);
 
 			console.log(
 				colors.bold(`Running day ${day}...`) +
