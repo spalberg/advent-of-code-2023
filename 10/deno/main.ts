@@ -1,5 +1,5 @@
-import { colors, match, P, Table } from '../../deps.ts';
-import { isDebug, notNull } from '../../utils.ts';
+import { match, P } from '../../deps.ts';
+import { notNull } from '../../utils.ts';
 
 type Tile = '|' | '-' | 'L' | 'J' | '7' | 'F' | '.' | 'S';
 type Area = Array<Array<Tile>>;
