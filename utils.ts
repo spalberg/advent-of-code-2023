@@ -22,7 +22,7 @@ export function notNull<T>(item: T | null | undefined): item is T {
 	return item != null;
 }
 
-export function parseInt(input: string): number {
+export function toInt(input: string): number {
 	return Number.parseInt(input.trim(), 10);
 }
 

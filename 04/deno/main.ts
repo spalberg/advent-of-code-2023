@@ -1,11 +1,11 @@
-import { parseInt } from '../../utils.ts';
+import { toInt } from '../../utils.ts';
 
 function parseCard(line: string) {
 	const [_, id, winningNumbers, ownNumbers] = line.match(/Card +(\d+): (.*) \| (.*)/) ?? [];
 	return {
-		id: parseInt(id),
-		winningNumbers: winningNumbers.split(' ').filter(Boolean).map(parseInt),
-		ownNumbers: ownNumbers.split(' ').filter(Boolean).map(parseInt),
+		id: toInt(id),
+		winningNumbers: winningNumbers.split(' ').filter(Boolean).map(toInt),
+		ownNumbers: ownNumbers.split(' ').filter(Boolean).map(toInt),
 	};
 }
 

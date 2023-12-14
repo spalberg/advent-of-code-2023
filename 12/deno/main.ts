@@ -1,4 +1,4 @@
-import { memo, parseInt } from '../../utils.ts';
+import { memo, toInt } from '../../utils.ts';
 
 function parseRecords(
 	input: Array<string>,
@@ -7,7 +7,7 @@ function parseRecords(
 		const [row, groups] = line.split(' ');
 		return [
 			row,
-			groups.split(',').map(parseInt),
+			groups.split(',').map(toInt),
 		];
 	});
 }

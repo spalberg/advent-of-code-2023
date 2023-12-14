@@ -13,7 +13,7 @@ function locateGalaxies(image: Image): Array<Galaxy> {
 	return galaxies;
 }
 
-function getTotalDistance(image: Image, expansionFactor: number): number {
+export function getTotalDistance(image: Image, expansionFactor: number): number {
 	const galaxies = locateGalaxies(image);
 	const columnsWithGalaxies = [...new Set(galaxies.map((g) => g[0]).sort())];
 	const rowsWithGalaxies = [...new Set(galaxies.map((g) => g[1]).sort())];

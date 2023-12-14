@@ -1,4 +1,4 @@
-import { parseInt } from '../../utils.ts';
+import { toInt } from '../../utils.ts';
 
 type Range = [start: number, length: number];
 type MappingGroup = Array<[Range, number]>;
@@ -6,7 +6,7 @@ type MappingGroup = Array<[Range, number]>;
 function parseInput(
 	input: Array<string>,
 ): { seeds: Array<number>; mappingGroups: Array<MappingGroup> } {
-	const seeds = input.shift()!.replace('seeds: ', '').split(' ').map(parseInt);
+	const seeds = input.shift()!.replace('seeds: ', '').split(' ').map(toInt);
 	input.shift();
 	const mappingGroups = [];
 	let mappings: MappingGroup = [];
@@ -18,7 +18,7 @@ function parseInput(
 			mappings = [];
 			continue;
 		}
-		const [dest, src, length] = line.split(' ').map(parseInt);
+		const [dest, src, length] = line.split(' ').map(toInt);
 		mappings.push([[src, length], dest]);
 	}
 	mappingGroups.push(mappings);

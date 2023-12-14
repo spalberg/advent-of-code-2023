@@ -1,5 +1,5 @@
 import { assertEquals } from '../../deps.ts';
-import { part1, part2 } from './main.ts';
+import { getTotalDistance, part1 } from './main.ts';
 
 const input = `...#......
 .......#..
@@ -17,5 +17,5 @@ Deno.test('Part 1', () => {
 });
 
 Deno.test('Part 2', () => {
-	assertEquals(part2(input), 8410);
+	assertEquals(getTotalDistance(input, 100), 8410);
 });

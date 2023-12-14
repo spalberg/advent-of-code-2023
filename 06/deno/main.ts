@@ -1,8 +1,8 @@
-import { parseInt } from '../../utils.ts';
+import { toInt } from '../../utils.ts';
 
 function parseRaces(input: Array<string>) {
-	const times = input[0].match(/\b(\d+)\b/g)?.map(parseInt) ?? [];
-	const distances = input[1].match(/\b(\d+)\b/g)?.map(parseInt) ?? [];
+	const times = input[0].match(/\b(\d+)\b/g)?.map(toInt) ?? [];
+	const distances = input[1].match(/\b(\d+)\b/g)?.map(toInt) ?? [];
 	return times.map((time, index) => ({ time, distance: distances[index] }));
 }
 

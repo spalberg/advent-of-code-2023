@@ -1,7 +1,7 @@
-import { parseInt } from '../../utils.ts';
+import { toInt } from '../../utils.ts';
 
 function parseSequence(line: string): Array<number> {
-	return line.split(' ').map(parseInt);
+	return line.split(' ').map(toInt);
 }
 
 function derive(sequence: Array<number>): Array<Array<number>> {
