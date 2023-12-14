@@ -26,6 +26,19 @@ export function parseInt(input: string): number {
 	return Number.parseInt(input.trim(), 10);
 }
 
+export function memo<Args extends Array<unknown>, Result>(
+	fn: (...args: Args) => Result,
+): (...args: Args) => Result {
+	const cache = new Map<string, Result>();
+	return (...args) => {
+		const key = JSON.stringify(args);
+		if (cache.has(key)) return cache.get(key)!;
+		const result = fn(...args);
+		cache.set(key, result);
+		return result;
+	};
+}
+
 declare global {
 	interface Window {
 		__DEBUG__: boolean;
