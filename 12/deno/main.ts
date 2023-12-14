@@ -1,62 +1,53 @@
-import { parseInt, tap, tapF } from '../../utils.ts';
+import { memo, parseInt } from '../../utils.ts';
 
-type Marker = '#' | '.' | '?';
-
-type Row = {
-	damagedArrangement: Array<Marker>;
-	groups: Array<number>;
-};
-
-export function parseRecords(input: Array<string>): Array<Row> {
+function parseRecords(
+	input: Array<string>,
+): Array<[row: string, groups: readonly number[]]> {
 	return input.map((line) => {
-		const [damagedArrangement, groups] = line.split(' ');
-		return {
-			damagedArrangement: damagedArrangement.split('') as Array<Marker>,
-			groups: groups.split(',').map(parseInt),
-		};
+		const [row, groups] = line.split(' ');
+		return [
+			row,
+			groups.split(',').map(parseInt),
+		];
 	});
 }
 
-export function findPossibleArragement({ damagedArrangement, groups }: Row): Array<Array<Marker>> {
-	const length = damagedArrangement.length;
-	const strictRegex = new RegExp('^\\.*' + groups.map((g) => `(#{${g}})`).join('\\.+') + '\\.*$');
-	const laxRegex = new RegExp(
-		'^[\\.?]*' + groups.map((g) => `([#?]{${g}})`).join('[\\.?]+') + '[\\.?]*$',
-	);
-	return findPossibleArragementRec(damagedArrangement);
-
-	function findPossibleArragementRec(arrangement: Array<Marker>, index = 0): Array<Array<Marker>> {
-		if (index === length) {
-			return match(arrangement, strictRegex) ? [arrangement] : [];
+const countPossibleArragements = memo((row: string, groups: readonly number[]): number => {
+	if (groups.length === 0) {
+		if (row.includes('#')) return 0;
+		return 1;
+	}
+	if (row.length === 0) {
+		return 0;
+	}
+	if (row.length < groups.reduce((a, b) => a + b) + groups.length - 1) return 0;
+	if (row[0] === '.') {
+		return countPossibleArragements(row.slice(1), groups);
+	}
+	if (row[0] === '#') {
+		const group = groups[0];
+		for (let i = 0; i < group; i++) {
+			if (row[i] === '.') return 0;
 		}
-		const marker = arrangement[index];
-		if (!match(arrangement, laxRegex)) return [];
-		if (marker === '?') {
-			return [
-				...findPossibleArragementRec(replaceAt(arrangement, index, '.'), index + 1),
-				...findPossibleArragementRec(replaceAt(arrangement, index, '#'), index + 1),
-			];
-		} else {
-			return findPossibleArragementRec(arrangement, index + 1);
-		}
+		if (row[group] === '#') return 0;
+		return countPossibleArragements(row.slice(group + 1), groups.slice(1));
 	}
-
-	function match(arrangement: Array<Marker>, regex: RegExp): boolean {
-		return arrangement.join('').match(regex) != null;
-	}
-
-	function replaceAt(arrangement: Array<Marker>, index: number, marker: Marker): Array<Marker> {
-		const copy = [...arrangement];
-		copy[index] = marker;
-		return copy;
-	}
-}
+	return countPossibleArragements('#' + row.slice(1), groups) +
+		countPossibleArragements('.' + row.slice(1), groups);
+});
 
 export function part1(input: Array<string>): number {
 	return parseRecords(input)
-		.reduce((sum, row) => sum + findPossibleArragement(row).length, 0);
+		.reduce((sum, [row, groups]) => sum + countPossibleArragements(row, groups), 0);
 }
 
 export function part2(input: Array<string>): number {
-	return -1;
+	return parseRecords(input)
+		.map(([row, groups]) =>
+			[
+				Array.from(Array(5).keys()).map((_) => row).join('?'),
+				Array.from(Array(5).keys()).flatMap((_) => groups),
+			] as const
+		)
+		.reduce((sum, [row, groups]) => sum + countPossibleArragements(row, groups), 0);
 }
