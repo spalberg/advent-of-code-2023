@@ -60,29 +60,3 @@ export function part2(input: Array<string>): number {
 		})
 		.reduce((a, b) => a + b);
 }
-
-function debug(pattern: Array<string>, reflectionBeforeIndex: number, isVertical: boolean) {
-	if (isVertical) {
-		console.log(
-			Array.from(Array(pattern[0].length).keys()).map((i) => Math.floor((i + 1) / 10)).join(''),
-		);
-		console.log(Array.from(Array(pattern[0].length).keys()).map((i) => (i + 1) % 10).join(''));
-		console.log(
-			Array.from(Array(pattern[0].length).keys()).map((i) =>
-				i === reflectionBeforeIndex - 1 ? '>' : i === reflectionBeforeIndex ? '<' : ' '
-			).join(''),
-		);
-		console.log(pattern.join('\n'));
-	} else {
-		console.log(
-			pattern.map((l, i) =>
-				(i + 1).toString().padStart(2, '0') +
-				(i === reflectionBeforeIndex - 1 ? 'v' : i === reflectionBeforeIndex ? '^' : ' ') +
-				l
-			).join('\n'),
-		);
-	}
-	console.log();
-	console.log('-----------');
-	console.log();
-}
