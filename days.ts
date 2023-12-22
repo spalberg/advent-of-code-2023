@@ -14,6 +14,7 @@ import * as day13 from './13/deno/main.ts';
 import * as day14 from './14/deno/main.ts';
 import * as day15 from './15/deno/main.ts';
 import * as day16 from './16/deno/main.ts';
+import * as day17 from './17/deno/main.ts';
 
 export const days = new Map(
 	[
@@ -33,5 +34,6 @@ export const days = new Map(
 		[14, day14],
 		[15, day15],
 		[16, day16],
+		[17, day17],
 	] as const,
 );

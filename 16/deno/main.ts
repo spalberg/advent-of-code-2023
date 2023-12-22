@@ -14,6 +14,7 @@ function countEnergizedTiles(layout: Array<Array<Tile>>, initialBeam: Beam): num
 	const beams: Array<Beam> = [initialBeam];
 	let beam: Beam | undefined;
 	const energizedTiles = new Map<string, Set<Direction>>();
+	// deno-lint-ignore no-cond-assign
 	while (beam = beams.shift()) {
 		const [x, y, direction] = beam;
 		if (x < 0 || y < 0 || x > maxX || y > maxY) {

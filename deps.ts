@@ -1,4 +1,5 @@
 export { assertEquals } from 'https://deno.land/std@0.208.0/assert/mod.ts';
+export { ascend, BinaryHeap, descend } from 'https://deno.land/std@0.208.0/data_structures/mod.ts';
 export { existsSync } from 'https://deno.land/std@0.208.0/fs/mod.ts';
 export { colors } from 'https://deno.land/x/cliffy@v1.0.0-rc.3/ansi/colors.ts';
 export { Command, EnumType } from 'https://deno.land/x/cliffy@v1.0.0-rc.3/command/mod.ts';
